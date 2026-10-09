@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Helios: guia da equipe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f5f1;--fg:#1d2a22;--mut:#55635a;--card:#fff;--line:#cfdad2;--leaf:#2e7d4f;--on:#fff;--st:#c98a0a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1712;--fg:#e6efe8;--mut:#9db0a3;--card:#16211a;--line:#28392e;--leaf:#5cc489;--on:#0f1712;--st:#f2b134}}
+:root[data-theme="dark"]{--bg:#0f1712;--fg:#e6efe8;--mut:#9db0a3;--card:#16211a;--line:#28392e;--leaf:#5cc489;--on:#0f1712;--st:#f2b134}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+h1,h2,h3{font-family:Outfit,system-ui,sans-serif;line-height:1.15;margin:0}
+h1{font-size:clamp(3rem,12vw,5.5rem);letter-spacing:-.02em}
+h2{font-size:1.7rem;margin:52px 0 12px}
+h3{font-size:1.15rem;margin:22px 0 6px}
+.lead{font-size:1.15rem;max-width:60ch;color:var(--mut);margin:8px 0 24px}
+svg{width:100%;height:auto;display:block}
+.bx{fill:var(--card);stroke:var(--leaf);stroke-width:2}
+.tx{fill:var(--fg);font:700 14px Outfit,sans-serif}
+.sm{fill:var(--mut);font:12px "Atkinson Hyperlegible",sans-serif}
+.sw{stroke:var(--st);stroke-width:2.5;stroke-dasharray:7 6;fill:none;stroke-linecap:round}
+.rules{padding-left:20px;max-width:64ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+button{font:inherit;cursor:pointer;border:2px solid var(--leaf);background:transparent;color:var(--fg);border-radius:999px;padding:6px 16px}
+button[aria-pressed="true"]{background:var(--leaf);color:var(--on);font-weight:700}
+:focus-visible{outline:3px solid var(--st);outline-offset:2px}
+.panel{border-left:6px solid var(--leaf);padding:4px 0 4px 18px;max-width:70ch}
+.panel h3:first-child{margin-top:0}
+.role{color:var(--mut);margin:2px 0 10px}
+.panel ul{padding-left:20px;margin:6px 0}
+.panel li{margin:5px 0}
+.mk{list-style:none;padding:0;max-width:70ch}
+.mk li{padding:10px 0;border-bottom:1px solid var(--line)}
+.mk label{display:flex;gap:12px;cursor:pointer}
+.mk input{width:22px;height:22px;accent-color:var(--leaf);flex:none;margin-top:3px}
+.mk small{display:block;color:var(--mut)}
+.mk input:checked+span strong{text-decoration:line-through;opacity:.6}
+.tw{overflow-x:auto;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.95rem}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{background:var(--card);font-family:Outfit,sans-serif}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.88em;background:var(--card);padding:1px 5px;border:1px solid var(--line)}
+.pr{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--card);border:1px solid var(--line);padding:12px;font:.88rem/1.5 ui-monospace,Consolas,monospace;margin:8px 0 12px}
+footer{margin-top:48px;color:var(--mut);font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+<h1>Helios</h1>
+<p class="lead">Guia da equipe. Cada peça do projeto funciona sozinha. O difícil, e o que vai decidir tudo, é a costura entre elas.</p>
+
+<svg viewBox="0 0 720 250" role="img" aria-label="Mapa do sistema: NodeMCU e ESP32-CAM enviam ao Firebase, que alimenta o site e a função de IA">
+<rect class="bx" x="12" y="20" width="150" height="60" rx="6"/><text class="tx" x="87" y="48" text-anchor="middle">NodeMCU</text><text class="sm" x="87" y="66" text-anchor="middle">sensores e bomba</text>
+<rect class="bx" x="12" y="170" width="150" height="60" rx="6"/><text class="tx" x="87" y="198" text-anchor="middle">ESP32-CAM</text><text class="sm" x="87" y="216" text-anchor="middle">fotos da planta</text>
+<rect class="bx" x="285" y="85" width="150" height="80" rx="6"/><text class="tx" x="360" y="120" text-anchor="middle">Firebase</text><text class="sm" x="360" y="139" text-anchor="middle">banco, fotos, regras</text>
+<rect class="bx" x="558" y="20" width="150" height="60" rx="6"/><text class="tx" x="633" y="48" text-anchor="middle">Função + IA</text><text class="sm" x="633" y="66" text-anchor="middle">analisa a foto</text>
+<rect class="bx" x="558" y="170" width="150" height="60" rx="6"/><text class="tx" x="633" y="198" text-anchor="middle">Site</text><text class="sm" x="633" y="216" text-anchor="middle">painel e bomba</text>
+<path class="sw" d="M162 50 C225 50 225 110 285 110"/><path class="sw" d="M162 200 C225 200 225 140 285 140"/>
+<path class="sw" d="M435 110 C495 110 495 50 558 50"/><path class="sw" d="M435 140 C495 140 495 200 558 200"/>
+<text class="sm" x="196" y="36">sensores</text><text class="sm" x="196" y="190">fotos</text>
+<text class="sm" x="480" y="36">foto nova</text><text class="sm" x="475" y="190">leituras</text>
+</svg>
+
+<h2>Regras da costura</h2>
+<ul class="rules">
+<li>Teste cada peça sozinha antes de ligar na outra.</li>
+<li>Teste cada conexão com um valor falso antes de usar o real.</li>
+<li>Nenhum nome de campo muda sem avisar o grupo e a Tamiris.</li>
+<li>Chaves e senhas não vão para o GitHub nem para o grupo aberto.</li>
+</ul>
+
+<h2>Quem faz o quê</h2>
+<p>No fim de cada ficha há um prompt pronto para pedir ajuda à IA. Preencha os colchetes e cole junto o seu código e as mensagens de erro. Se não entender um termo, peça para a IA explicar do zero. Ela também erra: teste tudo e só use o que você entendeu.</p>
+<div class="chips" id="chips" role="group" aria-label="Escolha uma pessoa"></div>
+<div class="panel" id="panel" aria-live="polite"></div>
+
+<h2>Marcos</h2>
+<p class="lead">Na ordem. Só passe ao próximo quando o anterior funcionar de verdade. Os testes de integração são feitos em dupla rotativa, e a Tamiris registra cada resultado.</p>
+<ul class="mk" id="mk"></ul>
+
+<h2>Combinado dos dados</h2>
+<div class="tw"><table>
+<tr><th>Onde</th><th>Campos</th><th>Escreve / lê</th></tr>
+<tr><td><code>sensores/(id)</code></td><td><code>timestamp</code> (do servidor), <code>temperatura</code>, <code>umidadeAr</code>, <code>umidadeSolo</code> (0 a 100), <code>luminosidade</code>, <code>bomba</code> (true/false)</td><td>NodeMCU escreve; site, função e planilha leem</td></tr>
+<tr><td><code>fotos/foto_(segundos).jpg</code></td><td>imagem JPEG no Storage</td><td>ESP32-CAM escreve; função e site leem</td></tr>
+<tr><td><code>analises/(timestamp)</code></td><td><code>imagem</code>, <code>sensoresUsados</code>, <code>resultado</code> (saudavel, confianca, problema, descricao, relacao_sensores, tratamento), <code>status</code></td><td>Função escreve; site lê</td></tr>
+<tr><td><code>controle/bomba</code>, <code>controle/modoAuto</code></td><td>true ou false</td><td>Site escreve; NodeMCU lê</td></tr>
+</table></div>
+<p>Nomes sem acento, em camelCase. Números sem unidade: <code>27.5</code>, nunca "27,5 °C".</p>
+
+<h2>Quando algo dá errado</h2>
+<div class="tw"><table>
+<tr><th>O que aparece</th><th>Causa provável</th><th>O que fazer</th></tr>
+<tr><td>Placa não conecta no Wi-Fi</td><td>Hotspot em 5 GHz, nome com acento ou espaço, senha errada</td><td>Hotspot em 2,4 GHz e nome simples, como <code>helios2026</code></td></tr>
+<tr><td>ESP32-CAM reinicia sozinho</td><td>Fonte fraca</td><td>5V com 1A ou mais e cabo curto</td></tr>
+<tr><td>Permission denied</td><td>Regras bloqueiam ou o aparelho não fez login</td><td>Conferir e-mail, senha e regras</td></tr>
+<tr><td>Site mostra "--"</td><td>firebaseConfig errado, nome de campo diferente ou falta índice de timestamp</td><td>Abrir o console do navegador (F12) e comparar os nomes</td></tr>
+<tr><td>Função não dispara</td><td>Foto fora de <code>fotos/</code>, região diferente, sem plano Blaze ou chave não definida</td><td>Rodar <code>firebase functions:log</code></td></tr>
+<tr><td>IA com confiança baixa</td><td>Foto escura, desfocada ou longe</td><td>Mais luz, câmera mais perto, foco ajustado</td></tr>
+</table></div>
+
+<footer>Projeto Helios. EE Maria Vicência Brandão. Os códigos de referência (ESP32-CAM, função de IA e NodeMCU) o professor entrega em arquivo.</footer>
+</main>
+<script>
+const P={
+mateus:{n:"Mateus",r:"NodeMCU: sensores e bomba",o:"Sensores lendo com confiança, dados indo ao Firebase e a bomba obedecendo o site.",
+t:["Revisar a leitura atual: temperatura e umidade do ar (DHT11), solo e luz. O NodeMCU tem só uma entrada analógica (A0): confirme como solo e luz dividem isso hoje.","Conectar no hotspot e reconectar sozinho se o Wi-Fi cair.","Enviar cada leitura para sensores/ com o horário do servidor.","Ler controle/bomba e controle/modoAuto e acionar o relé. No automático, ligar abaixo de uns 30% de solo, desligar acima de 45% e limitar o tempo máximo da bomba ligada.","Não enviar leitura inválida (NaN do DHT)."],
+c:["Um registro novo no console do Firebase a cada envio.","Sensor de solo na água: o valor sobe. Sensor de luz tampado: o valor muda.","Hotspot desligado por 2 minutos e religado: volta a enviar sozinho."],
+e:["Pinagem do NodeMCU (A0 única)","Wi-Fi no Arduino","Biblioteca Firebase ESP Client","millis() em vez de delay()","Relé com lógica invertida","Calibrar o sensor de solo (seco e molhado)"]},
+joao:{n:"João Pedro",r:"ESP32-CAM: fotos",o:"Foto nítida da planta chegando sozinha na pasta fotos/ do Storage.",
+t:["Gravar a placa (adaptador FTDI ou base USB, com GPIO0 no GND).","Alimentar com 5V e pelo menos 1A.","Testar primeiro com o exemplo CameraWebServer, sem envio nenhum.","Escolher resolução (VGA ou QVGA), posição fixa a 20 ou 30 cm da planta e boa luz.","Rodar o código de envio: Wi-Fi, horário por NTP, foto e upload.","Definir o intervalo real: cerca de 5 fotos por dia (2 minutos só no teste)."],
+c:["A foto aparece no Storage com nome numérico.","Cinco fotos seguidas sem reiniciar.","Foto nítida de dia e com pouca luz.","Wi-Fi cai e volta: a câmera volta a enviar."],
+e:["Pinagem do ESP32-CAM AI Thinker","Resolução e qualidade JPEG","PSRAM","NTP e fuso horário","Upload HTTPS","Queda de tensão (brownout)"]},
+willer:{n:"Willer",r:"Firebase: banco, Storage e função",o:"A central do Helios pronta, segura e documentada para todos ligarem nela.",
+t:["Com o professor: criar o projeto, ativar o plano Blaze (precisa de cartão de um adulto) e criar alerta de orçamento baixo.","Adicionar os colegas como Editores.","Criar Realtime Database, Authentication (e-mail e senha, um usuário por aparelho) e Storage. A região do Storage não muda depois.","Escrever as regras: leitura aberta ao site, escrita só de quem fez login, analises/ só pela função.","Entregar o firebaseConfig ao Luiz, URL do banco, chave e login ao Mateus, chave, bucket e login ao João Pedro.","Publicar a Cloud Function e guardar a chave da OpenAI nos secrets, nunca no código.","Testar sem hardware: criar uma leitura e subir uma foto à mão."],
+c:["Leitura criada à mão aparece no site.","Foto subida à mão gera um registro em analises/.","Escrever sem login é recusado.","O log da função não mostra erros."],
+e:["Modelagem de dados em JSON","Regras de segurança","Firebase Authentication","Cloud Functions e gatilhos","Secrets","Planos Spark e Blaze, orçamento e regiões","Firebase CLI"]},
+luiz:{n:"Luiz",r:"Site: evoluir o que já existe",o:"O site atual lendo do Firebase, com foto, análise da IA e controle da bomba.",
+t:["Trocar a planilha pelo Realtime Database. Com onValue, a tela atualiza sozinha.","Cards de temperatura, umidade do ar, solo, luz e bomba.","Card da última foto e da análise, com o aviso de que a IA pode errar. Mostrar o texto da IA com textContent, nunca innerHTML.","Gráficos do histórico com as últimas leituras.","Login e botão da bomba escrevendo em controle/.","Aviso de sem comunicação se a última leitura tiver mais de 5 minutos.","Ajustar o layout do celular, usando a paleta e as fontes da Lara."],
+c:["Valor criado no console aparece sem recarregar.","NodeMCU desligado: o aviso aparece.","Sem login, o botão da bomba não funciona.","A página abre bem no celular."],
+e:["Firebase Web SDK","onValue, query, orderByChild e limitToLast","Authentication no navegador","Chart.js","textContent x innerHTML","async e await"]},
+henrique:{n:"Henrique",r:"Validação de dados, prompt da IA e relatório",o:"Garantir que os dados e as respostas da IA sejam confiáveis.",
+t:["Manter a planilha atual funcionando até a troca.","Opcional: um Apps Script que importa as últimas leituras do Firebase para uma aba, uma vez por hora, para relatórios.","Validar os dados: horários certos, sem duplicados, sem valores impossíveis.","Montar um banco de teste da IA: 10 fotos saudáveis e 10 com problema.","Registrar o que a IA respondeu, ver quanto acertou e ajustar o prompt com o Willer."],
+c:["Tabela de acertos da IA preenchida.","Aba da planilha igual ao Firebase.","Rodar o script duas vezes não duplica linhas."],
+e:["Google Apps Script e UrlFetchApp","API REST do Realtime Database","Prompt: pedir JSON e dar contexto","Medir acerto e erro","Validação de dados"]},
+tamiris:{n:"Tamiris",r:"Diário de bordo e documentação",o:"Contar a história do Helios com datas, testes e erros, pronta para a apresentação.",
+t:["Escolher onde o diário fica (um Google Docs compartilhado) e padronizar a ficha: data, quem fez, o que foi feito, problema, solução, resultado e próximo passo.","Acompanhar os testes de integração e anotar cada resultado.","Guardar prints e fotos da montagem.","Manter um quadro de erros e soluções.","Montar um resumo para o campeonato."],
+c:["Alguém entende um dia inteiro lendo só a ficha.","Cada marco tem pelo menos um registro com resultado."],
+e:["Relatório técnico","Descrever problema e solução","Versionamento simples","Markdown ou Docs com títulos","Fotografar e legendar o processo"]},
+lara:{n:"Lara",r:"Banner do projeto (cartaz)",o:"Um banner que explique o Helios de relance e acompanhe a evolução do projeto até o campeonato.",
+t:["Levantar com o grupo o que vai no banner: nome, a ideia em duas linhas, como funciona (sensores, câmera, Firebase, site e IA), equipe e funções, resultados e fotos reais.","Definir paleta e fontes e passar ao Luiz para o site.","Montar o cartaz com hierarquia: título grande, esquema do sistema, pontos principais e um QR code do site.","Combinar o tamanho de impressão com o professor (por exemplo A1 ou A0) e trabalhar em alta resolução ou em vetor.","Atualizar o banner a cada marco: trocar o esquema e acrescentar fotos e resultados reais.","Guardar cada versão com data (banner_v1, banner_v2) para não perder a anterior.","Opcional: logo e favicon do site, na mesma identidade."],
+c:["Dá para entender o projeto em 30 segundos, lendo a 2 metros de distância.","Texto legível de longe e com bom contraste.","O que está no banner bate com o que o projeto faz de verdade hoje.","O QR code abre o site no celular.","Arquivo final em PDF, testado numa impressão pequena antes."],
+e:["Hierarquia visual e composição de cartaz","Teoria das cores e contraste","Resolução, dpi e tamanhos de papel","Vetor (SVG) e imagem","Canva, Figma ou Inkscape","Como explicar um sistema com um esquema simples"]},
+emanuele:{n:"Emanuele",r:"Visual do protótipo e da montagem",o:"Deixar o protótipo bonito, organizado e fácil de entender, do jeito que vai ser apresentado.",
+t:["Desenhar a montagem antes de colar ou parafusar qualquer coisa: onde ficam NodeMCU, relé, bomba, ESP32-CAM, sensores e a planta.","Organizar fios e peças: cabos no comprimento certo, abraçadeiras, etiquetas nos sensores e uma caixa ou base para o NodeMCU e o relé.","Pensar a caixa ou estrutura com o grupo (acrílico, MDF, madeira ou isopor pintado), deixando furos para cabos, sensores e câmera.","Escolher a planta e o vaso da demonstração. Ideias: manjericão, hortelã, alface ou pimenteira pequena, com folhas bem visíveis para a câmera e que respondem à rega. Testar se a câmera enxerga bem a folha.","Definir o posicionamento: câmera a 20 ou 30 cm da planta, sensor de solo dentro do vaso, mangueira da bomba discreta e reservatório de água fácil de abastecer.","Manter a água longe da eletrônica (bomba e reservatório afastados do NodeMCU e do relé).","Cuidar da apresentação: iluminação, plaquinhas identificando as peças e as cores do Helios, combinadas com a Lara.","Fotografar cada fase da montagem para a Tamiris e a Lara."],
+c:["O grupo aprovou o desenho da montagem antes de construir.","Nenhum fio solto e nenhuma peça eletrônica perto da água.","A câmera enxerga a planta inteira com boa luz.","Alguém de fora entende o que cada parte faz só olhando.","Depois de embelezar, o protótipo ainda funciona (repita o teste do ensaio geral)."],
+e:["Organização de cabos e etiquetas","Segurança elétrica básica: água longe da eletrônica","Caixas e acabamento (MDF, acrílico, impressão 3D)","Cuidados com plantas e rega","Fotografia de produto","Esboço e planta baixa simples"]}};
+const PR={
+mateus:"Sou aluno do ensino médio regular e estou fazendo a parte do NodeMCU (ESP8266) de um projeto de irrigação inteligente chamado Helios. Preciso ler os sensores [liste os que tenho: DHT11, solo, luz], enviar cada leitura ao Realtime Database do Firebase em sensores/ com os campos timestamp (horário do servidor), temperatura, umidadeAr, umidadeSolo (0 a 100), luminosidade e bomba (true ou false), e ler controle/bomba e controle/modoAuto para acionar um relé. Uso a biblioteca Firebase ESP Client (Mobizt) e conecto no hotspot do celular. Meus sensores estão ligados assim: [descreva os pinos]. Meu código atual é: [cole]. Meu problema é: [descreva e cole a mensagem do monitor serial]. Explique em português simples o que cada parte faz e por que o erro acontece.",
+joao:"Sou aluno do ensino médio regular e estou fazendo a parte do ESP32-CAM (modelo AI Thinker) do projeto Helios, de monitoramento de plantas. A placa precisa conectar no Wi-Fi do hotspot do celular (2,4 GHz), acertar o horário por NTP, tirar uma foto a cada [intervalo] e enviar para a pasta fotos/ do Firebase Storage com o nome foto_(segundos).jpg, usando e-mail e senha do Firebase Authentication. Uso o código base que o professor passou. Meu problema é: [descreva e cole a mensagem do monitor serial]. Já testei: [o que funciona, por exemplo a câmera no CameraWebServer]. Minha fonte de alimentação é: [descreva]. Explique a causa do problema em português simples e o que cada mudança faz.",
+willer:"Sou aluno do ensino médio regular e sou responsável pelo Firebase do projeto Helios (monitoramento de plantas com NodeMCU, ESP32-CAM, site e análise de foto por IA). Usamos Realtime Database com sensores/ (timestamp, temperatura, umidadeAr, umidadeSolo, luminosidade, bomba), analises/ e controle/ (bomba, modoAuto), Storage com a pasta fotos/ e Authentication por e-mail e senha. Uma Cloud Function dispara quando chega uma foto, busca a última leitura e chama a API da OpenAI, com a chave nos secrets. Estou nesta etapa: [etapa]. Meu problema é: [descreva e cole o erro do console ou do firebase functions:log]. Minhas regras atuais são: [cole]. Me ajude a entender o erro e a deixar as regras seguras sem abrir demais.",
+luiz:"Sou aluno do ensino médio regular e cuido do site do projeto Helios, um painel de monitoramento de planta. O site já existe (HTML, CSS e JavaScript, no GitHub Pages) e hoje lê dados de uma planilha. Preciso trocar para o Firebase Realtime Database (SDK web em módulos): mostrar a última leitura de sensores/ em tempo real, a última foto e a análise de analises/, um gráfico do histórico e um botão da bomba que escreve em controle/ depois do login. O texto da IA deve aparecer com textContent. Meu código atual é: [cole o HTML e o JavaScript]. O que quero fazer agora: [tarefa]. O erro no console (F12) é: [cole]. Explique o que cada parte faz.",
+henrique:"Sou aluno do ensino médio regular e cuido da validação dos dados e dos testes da IA no projeto Helios. Uma Cloud Function envia a foto da planta e a última leitura dos sensores para a API da OpenAI e pede resposta em JSON (saudavel, confianca, problema, descricao, relacao_sensores, tratamento). Quero [escolha: melhorar o prompt, montar a tabela de testes ou criar um Apps Script que importa as leituras de sensores/ do Firebase para uma planilha]. O prompt atual é: [cole]. Resultados dos meus testes: [cole a tabela]. Meu Apps Script, se houver: [cole]. Me ajude a entender por que a IA errou nos casos [exemplos] e a medir a taxa de acerto de forma simples.",
+tamiris:"Sou aluna do ensino médio regular e cuido do diário de bordo do projeto Helios (monitoramento de plantas com sensores, câmera, Firebase, site e IA). Cada registro deve ter data, quem fez, o que foi feito, problema, solução, resultado e próximo passo. Hoje aconteceu isto: [descreva com suas palavras, com erros e testes]. Me ajude a transformar isso em um registro claro e bem escrito, apontando o que ficou faltando. Depois quero montar [escolha: o resumo para a apresentação ou o quadro de erros e soluções] usando estes registros: [cole]. Escreva em português simples e não invente nada que eu não tenha contado.",
+lara:"Sou aluna do ensino médio regular e cuido do banner (cartaz) do projeto Helios, um sistema de monitoramento e irrigação inteligente de plantas feito por alunos para uma feira de robótica. O banner explica o projeto e precisa ser atualizado conforme ele evolui. Tamanho de impressão: [tamanho]. O que o projeto faz hoje: [descreva]. Versão atual do banner: [descreva ou cole o texto]. Quero [organizar o conteúdo, melhorar a hierarquia e o texto, escolher paleta e fontes ou explicar o sistema com um esquema simples]. Me ajude a deixar legível de longe e a entender o motivo de cada escolha. Não invente funções que o projeto não tem.",
+emanuele:"Sou aluna do ensino médio regular e cuido do visual do protótipo do projeto Helios, um sistema de irrigação inteligente com NodeMCU, relé, bomba, sensores e ESP32-CAM. Quero deixar a montagem mais bonita e organizada. Peças que temos: [liste]. Espaço e materiais disponíveis: [descreva]. A câmera precisa ficar a cerca de 20 ou 30 cm da planta e a água deve ficar longe da eletrônica. Preciso de ideias de [caixa ou base para as placas, organização dos fios, escolha da planta e do vaso, posicionamento das peças ou apresentação do protótipo]. Me explique cada ideia com um esboço em texto e me avise de riscos de segurança elétrica."};
+function prompt(id){const h=document.createElement("h3");h.textContent="Prompt para pedir ajuda à IA";
+const pre=document.createElement("pre");pre.className="pr";pre.textContent=PR[id];
+const b=document.createElement("button");b.textContent="Copiar prompt";
+b.onclick=async()=>{try{await navigator.clipboard.writeText(PR[id]);b.textContent="Copiado"}catch(e){const r=document.createRange();r.selectNodeContents(pre);const g=getSelection();g.removeAllRanges();g.addRange(r);b.textContent="Texto selecionado, copie com Ctrl+C"}};
+return[h,pre,b]}
+const M=[["Olá, Firebase","Um valor de teste do NodeMCU aparece no site.","Willer, Mateus, Luiz"],
+["Sensores reais","Leituras reais no site, com horário certo.","Mateus, Luiz"],
+["Foto no sistema","Foto real do ESP32-CAM no Storage e no site.","João Pedro, Willer, Luiz"],
+["IA entra","A foto gera uma análise que aparece no site.","Willer, Henrique, Luiz"],
+["Bomba pelo site","Login e botão ligam e desligam a bomba, e o modo automático é seguro.","Luiz, Mateus"],
+["Ensaio geral","Uma hora rodando sozinho, no hotspot, sem ninguém mexer.","Todos; Tamiris registra"]];
+const $=i=>document.getElementById(i);
+const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const ld=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}};
+function lista(t,arr){const h=document.createElement("h3");h.textContent=t;const u=document.createElement("ul");
+arr.forEach(x=>{const l=document.createElement("li");l.textContent=x;u.append(l)});return[h,u]}
+function mostrar(id){const p=P[id];if(!p)return;
+document.querySelectorAll("#chips button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.id===id));
+const a=document.createElement("h3");a.textContent=p.n;const r=document.createElement("p");r.className="role";r.textContent=p.r;
+const o=document.createElement("p");o.textContent=p.o;
+$("panel").replaceChildren(a,r,o,...lista("Tarefas",p.t),...lista("Como saber se funcionou",p.c),...lista("O que estudar",p.e),...prompt(id));
+sv("helios-pessoa",id)}
+Object.keys(P).forEach(id=>{const b=document.createElement("button");b.textContent=P[id].n;b.dataset.id=id;
+b.setAttribute("aria-pressed","false");b.onclick=()=>mostrar(id);$("chips").append(b)});
+mostrar(location.hash.slice(1) in P?location.hash.slice(1):ld("helios-pessoa","mateus"));
+const feitos=ld("helios-marcos",[]);
+M.forEach((m,i)=>{const li=document.createElement("li"),lb=document.createElement("label"),cb=document.createElement("input");
+cb.type="checkbox";cb.checked=feitos.includes(i);
+cb.onchange=()=>{const s=new Set(ld("helios-marcos",[]));cb.checked?s.add(i):s.delete(i);sv("helios-marcos",[...s])};
+const sp=document.createElement("span"),s1=document.createElement("strong"),s2=document.createElement("small");
+s1.textContent=m[0];s2.textContent=m[1]+" Quem: "+m[2]+".";sp.append(s1,s2);lb.append(cb,sp);li.append(lb);$("mk").append(li)});
+</script>
+</body>
+</html>
